@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "core"
+version = "0.1.0"
+description = "AI驱动的跨设备自动化测试框架核心模块"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name="atang", email="you@example.com" }
+]
+dependencies = [
+  "shared",
+  "core",
+  "pydantic>=2.0",
+  "pydantic-settings>=2.0",
+  "pillow>=10.0.0",
+  "openai>=1.0.0",
+  "tenacity>=8.0.0",
+  "loguru>=0.7.0",
+  "pytest>=7.0.0",
+  "playwright>=1.40.0",
+]
+
+[tool.uv.sources]
+tisui-shared = { path = "../shared", editable = true }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent", "src/vision"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src/core", "../shared/src"]
+markers = [
+    "e2e: end-to-end tests that require real VLM API calls",
+    "browser: browser-driven e2e tests using Playwright (real page + real VLM)",
+]
+

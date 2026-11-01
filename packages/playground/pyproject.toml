@@ -1,0 +1,24 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tisui-playground"
+version = "0.1.0"
+description = "Tisui playground 工程"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name="atang", email="you@example.com" }
+]
+dependencies = [
+  "tisui-shared",
+  "pytest>=7.0.0",
+]
+
+[tool.uv.sources]
+tisui-shared = { path = "../shared", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "../shared/src"]

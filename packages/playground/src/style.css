@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f7fb;
+  --text: #17202a;
+  --muted: #5f6b7a;
+  --panel: #ffffff;
+  --panel-soft: #f1f4f9;
+  --border: rgba(31, 41, 55, 0.14);
+  --accent: #2f6fe4;
+  --accent-2: #0891b2;
+  --highlight: #f59e0b;
+  --danger-bg: rgba(199, 62, 29, 0.1);
+  --danger: #c73e1d;
+  --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+
+  font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+html.dark {
+  --bg: #040813;
+  --text: #e7eefb;
+  --muted: #8ea0bc;
+  --panel: rgba(7, 12, 21, 0.88);
+  --panel-soft: rgba(14, 23, 38, 0.92);
+  --border: rgba(125, 142, 176, 0.18);
+  --accent: #5f8bff;
+  --accent-2: #61d4ff;
+  --highlight: #ffd35e;
+  --danger-bg: rgba(86, 18, 28, 0.55);
+  --danger: #ffc2c2;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, rgba(47, 111, 228, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(8, 145, 178, 0.14), transparent 30%),
+    var(--bg);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.app-shell {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}

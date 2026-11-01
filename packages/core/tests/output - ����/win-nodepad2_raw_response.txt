@@ -1,0 +1,31 @@
+```json
+{
+  "regions": [
+    {
+      "name": "pop",
+      "description": "记事本的保存提示弹窗，询问是否将更改保存到无标题文件，包含保存(S)、不保存(N)、取消三个操作按钮",
+      "z-index": 1,
+      "relative_bbox": [0.377, 0.362, 0.612, 0.520]
+    },
+    {
+      "name": "menu",
+      "description": "记事本的标题栏与菜单栏，包含窗口标题“*无标题 - 记事本”，以及文件(F)、编辑(E)、格式(O)、查看(V)、帮助(H)菜单选项",
+      "z-index": 2,
+      "relative_bbox": [0.0, 0.0, 1.0, 0.052]
+    },
+    {
+      "name": "main-content",
+      "description": "记事本的主编辑区域，为白色空白区域，包含输入的文本“魂牵梦萦魂牵梦萦”",
+      "z-index": 2,
+      "relative_bbox": [0.0, 0.052, 1.0, 0.941]
+    },
+    {
+      "name": "status-bar",
+      "description": "记事本的状态栏，显示光标位置（第1行，第9列）、缩放比例（100%）、换行格式（Windows (CRLF)）、编码（UTF-8）等信息",
+      "z-index": 2,
+      "relative_bbox": [0.0, 0.941, 1.0, 0.974]
+    }
+  ],
+  "errors": []
+}
+```

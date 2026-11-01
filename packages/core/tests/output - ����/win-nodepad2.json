@@ -1,0 +1,536 @@
+{
+  "elements": [
+    {
+      "type": "menu",
+      "control_type": "menu",
+      "relative_bbox": [
+        0.0,
+        0.025,
+        0.027,
+        0.048
+      ],
+      "text": "文件(F)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        0,
+        27,
+        52,
+        52
+      ]
+    },
+    {
+      "type": "menu",
+      "control_type": "menu",
+      "relative_bbox": [
+        0.028,
+        0.025,
+        0.056,
+        0.048
+      ],
+      "text": "编辑(E)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        54,
+        27,
+        108,
+        52
+      ]
+    },
+    {
+      "type": "menu",
+      "control_type": "menu",
+      "relative_bbox": [
+        0.057,
+        0.025,
+        0.091,
+        0.048
+      ],
+      "text": "格式(O)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        109,
+        27,
+        175,
+        52
+      ]
+    },
+    {
+      "type": "menu",
+      "control_type": "menu",
+      "relative_bbox": [
+        0.092,
+        0.025,
+        0.125,
+        0.048
+      ],
+      "text": "查看(V)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        177,
+        27,
+        240,
+        52
+      ]
+    },
+    {
+      "type": "menu",
+      "control_type": "menu",
+      "relative_bbox": [
+        0.126,
+        0.025,
+        0.158,
+        0.048
+      ],
+      "text": "帮助(H)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        242,
+        27,
+        303,
+        52
+      ]
+    },
+    {
+      "type": "textbox",
+      "control_type": "input",
+      "relative_bbox": [
+        0.0,
+        0.059,
+        0.997,
+        0.938
+      ],
+      "text": "魂牵梦萦魂牵梦萦",
+      "action_capablilities": [
+        "input",
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        0,
+        64,
+        1914,
+        1013
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.59,
+        0.371,
+        0.605,
+        0.395
+      ],
+      "text": "×",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "浅灰色",
+      "attributes": {
+        "color": "#F0F0F0",
+        "enabled": true
+      },
+      "bbox": [
+        1133,
+        401,
+        1162,
+        427
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.441,
+        0.479,
+        0.488,
+        0.509
+      ],
+      "text": "保存(S)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "浅灰色",
+      "attributes": {
+        "color": "#E0E0E0",
+        "enabled": true
+      },
+      "bbox": [
+        847,
+        517,
+        937,
+        550
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.495,
+        0.479,
+        0.547,
+        0.509
+      ],
+      "text": "不保存(N)",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "浅灰色",
+      "attributes": {
+        "color": "#E0E0E0",
+        "enabled": true
+      },
+      "bbox": [
+        950,
+        517,
+        1050,
+        550
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.555,
+        0.479,
+        0.599,
+        0.509
+      ],
+      "text": "取消",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "浅灰色",
+      "attributes": {
+        "color": "#E0E0E0",
+        "enabled": true
+      },
+      "bbox": [
+        1066,
+        517,
+        1150,
+        550
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.916,
+        0.004,
+        0.929,
+        0.027
+      ],
+      "text": "−",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        1759,
+        4,
+        1784,
+        29
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.949,
+        0.004,
+        0.965,
+        0.027
+      ],
+      "text": "□",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        1822,
+        4,
+        1853,
+        29
+      ]
+    },
+    {
+      "type": "button",
+      "control_type": "button",
+      "relative_bbox": [
+        0.979,
+        0.004,
+        0.994,
+        0.027
+      ],
+      "text": "×",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        1880,
+        4,
+        1908,
+        29
+      ]
+    },
+    {
+      "type": "searchbox",
+      "control_type": "input",
+      "relative_bbox": [
+        0.044,
+        0.964,
+        0.077,
+        0.997
+      ],
+      "text": "搜索",
+      "action_capablilities": [
+        "click",
+        "input"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        84,
+        1041,
+        148,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.197,
+        0.964,
+        0.212,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "黄色",
+      "attributes": {
+        "color": "#FFCC00",
+        "enabled": true
+      },
+      "bbox": [
+        378,
+        1041,
+        407,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.226,
+        0.964,
+        0.241,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "绿色",
+      "attributes": {
+        "color": "#2AAE67",
+        "enabled": true
+      },
+      "bbox": [
+        434,
+        1041,
+        463,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.25,
+        0.964,
+        0.265,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "蓝色",
+      "attributes": {
+        "color": "#007ACC",
+        "enabled": true
+      },
+      "bbox": [
+        480,
+        1041,
+        509,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.275,
+        0.964,
+        0.29,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        528,
+        1041,
+        557,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.3,
+        0.964,
+        0.315,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "蓝色",
+      "attributes": {
+        "color": "#4285F4",
+        "enabled": true
+      },
+      "bbox": [
+        576,
+        1041,
+        605,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.325,
+        0.964,
+        0.34,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "蓝色",
+      "attributes": {
+        "color": "#0078D7",
+        "enabled": true
+      },
+      "bbox": [
+        624,
+        1041,
+        653,
+        1077
+      ]
+    },
+    {
+      "type": "image",
+      "control_type": "button",
+      "relative_bbox": [
+        0.349,
+        0.964,
+        0.364,
+        0.997
+      ],
+      "text": "",
+      "action_capablilities": [
+        "click"
+      ],
+      "color_name": "白色",
+      "attributes": {
+        "color": "#FFFFFF",
+        "enabled": true
+      },
+      "bbox": [
+        670,
+        1041,
+        699,
+        1077
+      ]
+    }
+  ],
+  "errors": [],
+  "image": {
+    "width": 1920,
+    "height": 1080
+  }
+}
