@@ -1,0 +1,5 @@
+prompt:
+  default_locale: zh-CN
+  locale_fallbacks:
+    zh: zh-CN
+    en: en-US
