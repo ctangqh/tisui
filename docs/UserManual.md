@@ -29,11 +29,40 @@ model:
 act:
   cycle_limit: 5       # ai_act 最大重规划轮次 (ai_act 未显式传参时使用)
   total_timeout: 900   # ai_act 单任务墙钟上限(秒)
+
+explore:
+  forbidden_enabled: true   # ai_explore 危险词拦截开关; false 关闭内置黑名单
 ```
 
 - 密钥放在 `.env`（参考 `.env.sample`）：`VISION_API_KEY`、`LLM_API_KEY`。
 - `provider: openai` 可接入任何兼容 OpenAI `/v1/chat/completions` 协议的端点（官方 OpenAI / 中转代理 / 本地 vLLM 等），用 `base_url` 指定端点。
 - `config.yaml` 会作为包内兜底配置；在**运行目录**放一份 `config.yaml` 可覆盖，或用 `TISUI_CONFIG_PATH` 指向自定义配置文件。
+
+### 1.1 `explore.forbidden_enabled` — 危险词拦截开关
+
+`ai_explore` 内置一份危险词黑名单（28 个词，含 `删除`/`清空`/`支付`/`购买`/`退出登录`/`uninstall`/`logout` 等，见 `agent/explore/prompts.py` 的 `DANGEROUS_KEYWORDS`）。命中黑名单的目标**强制不点击**，并记一条 anomaly。
+
+| 配置值 | 行为 |
+|--------|------|
+| `true`（默认） | 内置黑名单 + 调用时传入的 `forbidden` 合并生效 |
+| `false` | **关闭内置黑名单**；调用时显式传入的 `forbidden` 仍然生效 |
+| 配置项缺失 / 类型非 bool | 回退到默认值 `true`（向后兼容） |
+
+```yaml
+explore:
+  forbidden_enabled: false
+```
+
+**设计取舍**：关闭开关只影响内置黑名单，不影响调用方显式传入的 `forbidden`——那是业务层的显式安全意图，不该被全局开关抹掉。
+
+```python
+# 全局关掉内置黑名单后，仍可用 forbidden 精确控制
+app.ai_explore(..., forbidden=["支付", "提交订单"])
+```
+
+**什么时候需要关**：测试环境里需要验证"删除/清空"这类流程本身（如测试删除功能是否正常），此时内置黑名单会挡住测试用例。
+
+**什么时候不该关**：生产环境的探索任务、只读巡检、给非技术同事用的工具。
 
 ---
 
@@ -195,7 +224,7 @@ result = app.ai_explore(
 | `strategy` | `"coverage"` | 探索策略：`coverage`（默认，优先覆盖未访问元素）/ `depth-first`（沿一条分支深入，到底后回溯最近分叉点继续；需 `backtrack=True`，否则报错） |
 | `max_depth` | `None` | 最大探索深度（页面跳转层级），`None` 不限制；当前深度达上限时不再进入新页面，只探索本页元素或回溯；越界时自动返回并记一条 finding |
 | `max_cycles` / `total_timeout` / `max_tokens` | 取 config | 轮次 / 墙钟 / token 预算上限 |
-| `forbidden` | 内置黑名单 | 危险词清单，与内置黑名单合并；命中"删除/退出登录/支付"等词的目标强制不点击并记 anomaly |
+| `forbidden` | 内置黑名单 | 危险词清单，与内置黑名单合并；命中"删除/退出登录/支付"等词的目标强制不点击并记 anomaly。内置黑名单可用 `explore.forbidden_enabled: false` 关闭，但此处显式传入的词**始终生效** |
 | `backtrack` | `True` | 允许规划器用 back 返回上一页继续探索 |
 | `memory_cache` / `reset_memory` | 预留 | Phase 2 接入，当前传 `memory_cache` 仅警告并按纯内存探索执行 |
 
