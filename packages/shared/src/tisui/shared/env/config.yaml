@@ -3,3 +3,10 @@ prompt:
   locale_fallbacks:
     zh: zh-CN
     en: en-US
+
+# ai_explore 探索行为配置
+explore:
+  # 危险词拦截开关
+  #   true  (默认) = 启用内置黑名单 + 用户追加清单，命中即拦截
+  #   false        = 关闭内置黑名单（用户显式传入的 forbidden 仍然生效）
+  forbidden_enabled: true

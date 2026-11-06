@@ -52,9 +52,28 @@ def get_prompt_locale_fallbacks() -> dict[str, str]:
     return normalized
 
 
+def get_forbidden_enabled(default: bool = True) -> bool:
+    """是否启用 ai_explore 的危险词拦截(含内置黑名单)。
+
+    配置项: explore.forbidden_enabled
+      true  (默认) 启用
+      false        关闭内置黑名单(用户显式传入的 forbidden 仍然生效)
+    """
+    config = load_env_config()
+    explore_config = config.get("explore")
+    if not isinstance(explore_config, dict):
+        return default
+
+    value = explore_config.get("forbidden_enabled")
+    if isinstance(value, bool):
+        return value
+    return default
+
+
 __all__ = [
     "CONFIG_YAML_PATH",
     "ENV_DIR",
+    "get_forbidden_enabled",
     "get_prompt_locale",
     "get_prompt_locale_fallbacks",
     "load_env_config",

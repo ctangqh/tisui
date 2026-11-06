@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from tisui.agent.vision_io import parse_json_loose
+from tisui.shared.env import get_forbidden_enabled
 
 # 内置危险词黑名单 (见 loop-design.md 4.6), 与 forbidden 参数合并生效
 DANGEROUS_KEYWORDS = (
@@ -252,8 +253,12 @@ def match_forbidden(target: str, forbidden: list[str]) -> str | None:
 
 
 def merge_forbidden(user_forbidden: list[str] | None) -> list[str]:
-    """内置黑名单 + 用户追加清单合并去重, 保持顺序。"""
-    merged = list(DANGEROUS_KEYWORDS)
+    """内置黑名单 + 用户追加清单合并去重, 保持顺序。
+
+    配置 explore.forbidden_enabled: false 时关闭内置黑名单,
+    但用户显式传入的 forbidden 仍然生效(那是显式意图)。
+    """
+    merged = list(DANGEROUS_KEYWORDS) if get_forbidden_enabled() else []
     for word in user_forbidden or []:
         w = str(word).strip()
         if w and w not in merged:
