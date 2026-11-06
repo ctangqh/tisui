@@ -4,6 +4,11 @@
 
 写脚本只需三步：**创建设备 → 进入 `tisui` 门面 → 调 `ai_*` 方法**。
 
+> 📚 **相关文档**
+> - **[configuration.md](./configuration.md)** — 配置项完整说明（全量参数、默认值、示例、常见场景）
+> - [../config.yaml](../config.yaml) — 全量配置模板（带注释，可直接复制）
+> - [../packages/core/.env.sample](../packages/core/.env.sample) — 环境变量模板
+
 ---
 
 ## 1. 运行前配置
@@ -38,31 +43,22 @@ explore:
 - `provider: openai` 可接入任何兼容 OpenAI `/v1/chat/completions` 协议的端点（官方 OpenAI / 中转代理 / 本地 vLLM 等），用 `base_url` 指定端点。
 - `config.yaml` 会作为包内兜底配置；在**运行目录**放一份 `config.yaml` 可覆盖，或用 `TISUI_CONFIG_PATH` 指向自定义配置文件。
 
-### 1.1 `explore.forbidden_enabled` — 危险词拦截开关
+> 📖 **所有配置项的完整说明（含义 / 类型 / 默认值 / 示例 / 常见场景）见 [configuration.md](./configuration.md)。**
 
-`ai_explore` 内置一份危险词黑名单（28 个词，含 `删除`/`清空`/`支付`/`购买`/`退出登录`/`uninstall`/`logout` 等，见 `agent/explore/prompts.py` 的 `DANGEROUS_KEYWORDS`）。命中黑名单的目标**强制不点击**，并记一条 anomaly。
+下表是常用配置项速查：
 
-| 配置值 | 行为 |
-|--------|------|
-| `true`（默认） | 内置黑名单 + 调用时传入的 `forbidden` 合并生效 |
-| `false` | **关闭内置黑名单**；调用时显式传入的 `forbidden` 仍然生效 |
-| 配置项缺失 / 类型非 bool | 回退到默认值 `true`（向后兼容） |
+| 配置段 | 作用 | 关键参数 |
+|--------|------|---------|
+| `model.llm` | 语言模型（规划、问答） | `provider` / `base_url` / `model` / `max_tokens` |
+| `model.vision` | 视觉模型（截图定位，核心） | 同上，未填自动继承 `llm` |
+| `model.timeout` / `max_retries` | 全局兜底 | 默认 60 秒 / 3 次 |
+| `act` | `ai_act` 行为 | `cycle_limit`（5）/ `total_timeout`（900） |
+| `explore` | `ai_explore` 行为 | `max_cycles`（50）/ `total_timeout`（600）/ `max_depth`（null）/ **`forbidden_enabled`（true）** |
+| `logging` | 日志 | `level`（INFO）/ `file_path` |
+| `runtime` | 运行环境 | `env` / `debug` / `cache_path` / `report_path` |
+| `prompt` | 提示词语言 | `default_locale`（zh-CN）/ `locale_fallbacks` |
 
-```yaml
-explore:
-  forbidden_enabled: false
-```
-
-**设计取舍**：关闭开关只影响内置黑名单，不影响调用方显式传入的 `forbidden`——那是业务层的显式安全意图，不该被全局开关抹掉。
-
-```python
-# 全局关掉内置黑名单后，仍可用 forbidden 精确控制
-app.ai_explore(..., forbidden=["支付", "提交订单"])
-```
-
-**什么时候需要关**：测试环境里需要验证"删除/清空"这类流程本身（如测试删除功能是否正常），此时内置黑名单会挡住测试用例。
-
-**什么时候不该关**：生产环境的探索任务、只读巡检、给非技术同事用的工具。
+**关于 `explore.forbidden_enabled`**：`ai_explore` 内置 28 个危险词（删除/支付/退出登录/卸载等），命中即拦截。设为 `false` 可关闭**内置黑名单**，但调用时显式传入的 `forbidden` 仍然生效。适用场景与风险提示见 [configuration.md#43-explore--ai_explore-行为](./configuration.md#43-explore--ai_explore-行为)。
 
 ---
 

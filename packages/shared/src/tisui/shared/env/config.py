@@ -11,8 +11,33 @@ ENV_DIR = Path(__file__).resolve().parent
 CONFIG_YAML_PATH = ENV_DIR / "config.yaml"
 
 
+def _load_root_config() -> dict[str, Any]:
+    """尝试读取主配置(root config.yaml)。
+
+    主配置由 tisui.shared.config 解析，遵循 TISUI_CONFIG_PATH / 工作目录 / 包内
+    的优先级。任何异常都退化到空 dict，交由包内 env/config.yaml 兜底。
+    """
+    try:
+        from tisui.shared.config import load_runtime_config
+
+        root = load_runtime_config()
+        return root if isinstance(root, dict) else {}
+    except Exception:
+        return {}
+
+
 @lru_cache(maxsize=1)
 def load_env_config() -> dict[str, Any]:
+    """读取配置：主配置优先，包内 env/config.yaml 兜底。
+
+    这样用户只需维护根目录一份 config.yaml，prompt / explore 等段都能被读到。
+    """
+    # 1) 主配置优先
+    root = _load_root_config()
+    if root:
+        return root
+
+    # 2) 兜底：包内 env/config.yaml（安装态默认模板）
     if not CONFIG_YAML_PATH.exists():
         return {}
 
